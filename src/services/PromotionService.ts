@@ -3,11 +3,11 @@ import { Promotion } from '@models';
 
 class PromotionService {
   getAllPromotions(): Promise<Promotion[]> {
-    return http.get('/v1/promotions');
+    return http.get('/v1/promotions').then((res) => res.data);
   }
 
   getPromotionById(id: string): Promise<Promotion> {
-    return http.get(`v1/promotions/${id}`);
+    return http.get(`/v1/promotions/${id}`);
   }
 }
 

@@ -3,7 +3,7 @@ import { Product } from '@models';
 
 class ProductService {
   getAllProducts(): Promise<Product[]> {
-    return http.get('/v1/products');
+    return http.get('/v1/products').then((res) => res.data);
   }
 
   getProductById(id: string): Promise<Product> {
