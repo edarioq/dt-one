@@ -3,9 +3,9 @@
     <div class="cart__icon" v-on:click="cart()">
       <img src="@/assets/trolley.svg" alt="" height="25" width="25" />
     </div>
-    <div class="cart__count">
+    <!-- <div class="cart__count">
       {{ products.length }}
-    </div>
+    </div> -->
   </aside>
 </template>
 
@@ -43,9 +43,6 @@ export default class Cart extends Vue {
   &__icon {
     width: 25px;
     height: 25px;
-    &:hover {
-      cursor: pointer;
-    }
   }
   &__count {
     font-size: 1.2rem;

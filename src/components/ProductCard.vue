@@ -19,15 +19,22 @@
       {{ product.prices.promotions ? product.prices.promotions : 'None' }}
     </div>
 
-    <button class="product-card__buy" v-on:click="addToCart(product)">
-      Buy Now
+    <button
+      class="product-card__buy"
+      v-on:click="addToCart(product)"
+      :disabled="loading"
+      :class="{ 'product-card__buy--disabled': loading }"
+    >
+      {{ loading ? 'Purchasing' : 'Buy Now' }}
     </button>
   </section>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
-import { Product } from '@models';
+import HelperService from '@/services/HelperService';
+import TransactionService from '@/services/TransactionService';
+import { AsyncTransaction, Product } from '@models';
 import useEmitter from '@/useEmitter';
 
 @Options({
@@ -37,14 +44,28 @@ import useEmitter from '@/useEmitter';
 })
 export default class ProductCard extends Vue {
   product!: Product;
+  loading = false;
   emitter = useEmitter();
 
   addToCart(product: Product): void {
+    this.loading = true;
+    const payload: AsyncTransaction = {
+      external_id: Math.random().toString(),
+      product_id: product.id,
+      credit_party_identifier: {
+        mobile_number: '+971585420100',
+      },
+      auto_confirm: true,
+    };
+    TransactionService.createTransaction(payload).then((res) => {
+      console.debug(res);
+      this.loading = false;
+    });
     this.emitter.emit('add-product', product);
   }
 
   roundPrice(value: string): string {
-    return parseFloat(value).toFixed(2);
+    return HelperService.roundPrice(value);
   }
 }
 </script>
@@ -93,6 +114,10 @@ export default class ProductCard extends Vue {
       cursor: pointer;
       color: var(--dark);
       background-color: var(--brand-2);
+    }
+    &--disabled {
+      background-color: var(--brand-2);
+      cursor: not-allowed;
     }
   }
 }

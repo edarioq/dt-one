@@ -151,3 +151,51 @@ export interface Transaction {
   };
   callback_url: string;
 }
+
+export interface AsyncTransaction {
+  external_id: string;
+  product_id: number;
+  calculation_mode?: 'SOURCE_AMOUNT';
+  source?: {
+    unit_type?: 'CURRENCY';
+    unit?: string;
+    amount?: number;
+  };
+  destination?: {
+    unit_type?: 'CURRENCY';
+    unit?: string;
+    amount?: number;
+  };
+  auto_confirm?: boolean;
+  sender?: {
+    last_name?: string;
+    first_name?: string;
+    middle_name?: string;
+    nationality_country_iso_code?: string;
+    mobile_number?: string;
+    email?: string;
+  };
+  beneficiary?: {
+    last_name?: string;
+    first_name?: string;
+    middle_name?: string;
+    nationality_country_iso_code?: string;
+    mobile_number?: string;
+    email?: string;
+  };
+  debit_party_identifier?: {
+    mobile_number?: string;
+    account_number?: string;
+    account_qualifier?: string;
+  };
+  credit_party_identifier: {
+    mobile_number?: string;
+    account_number?: string;
+    account_qualifier?: string;
+  };
+  statement_identifier?: {
+    reference?: string;
+    due_date?: '2019-08-24';
+  };
+  callback_url?: string;
+}

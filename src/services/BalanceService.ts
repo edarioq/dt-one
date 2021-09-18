@@ -3,7 +3,7 @@ import { Balance } from '@/models';
 
 class BalanceService {
   getAllBalances(): Promise<Balance[]> {
-    return http.get('/v1/balances');
+    return http.get('/v1/balances').then((res) => res.data);
   }
 }
 

@@ -1,10 +1,10 @@
 <template>
   <div class="container user">
+    <h1 class="user__heading">Product List</h1>
     <template v-if="loading">
       <Loading />
     </template>
     <template v-else>
-      <h1 class="user__heading">Product List</h1>
       <section class="user__product-list">
         <ProductCard
           v-for="product in products"
