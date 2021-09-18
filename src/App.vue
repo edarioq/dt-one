@@ -1,30 +1,46 @@
 <template>
-  <div id="nav">
-    <router-link to="/">User</router-link> |
-    <router-link to="/admin">Admin</router-link>
-  </div>
+  <Header />
+
   <router-view />
 </template>
 
+<script lang="ts">
+import { Options, Vue } from 'vue-class-component';
+import Header from '@/components/Header.vue';
+
+@Options({
+  components: {
+    Header,
+  },
+})
+export default class App extends Vue {}
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+html {
+  font-size: 10px;
 }
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+body {
+  font-family: var(--font);
+  background-image: linear-gradient(
+    to top,
+    var(--dark),
+    #615459,
+    #645b66,
+    #626373,
+    #5b6c7d,
+    #597989,
+    #578691,
+    #5a9394,
+    #62a79f,
+    #70baa7,
+    #84cdab,
+    var(--brand-3)
+  );
+  min-height: 100vh;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 </style>

@@ -11,4 +11,12 @@ module.exports = {
       },
     },
   },
+  css: {
+    loaderOptions: {
+      scss: {
+        prependData: '@import "@/theme.scss";',
+      },
+    },
+    sourceMap: true,
+  },
 };

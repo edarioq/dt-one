@@ -1,6 +1,5 @@
 <template>
-  <div class="home">
-    <Header />
+  <div class="container admin">
     <h1>
       An administrator section that displays Megasoft’s available Balances and
       Transaction reports.
@@ -19,3 +18,9 @@ import Header from '@/components/Header.vue';
 })
 export default class Admin extends Vue {}
 </script>
+
+<style scoped lang="scss">
+.admin {
+  padding: 0 50px;
+}
+</style>

@@ -1,5 +1,12 @@
 <template>
-  <header>Header</header>
+  <header class="container header">
+    <div class="header__logo">
+      <router-link class="header__logo__link" to="/">Megasoft</router-link>
+    </div>
+    <nav class="header__nav">
+      <router-link class="header__nav__link" to="/admin">Admin</router-link>
+    </nav>
+  </header>
 </template>
 
 <script lang="ts">
@@ -15,20 +22,25 @@ export default class Header extends Vue {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  padding: 0 50px;
+  &__logo {
+    &__link {
+      font-size: 2rem;
+      font-weight: var(--font-bold);
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--dark);
+    }
+  }
+  &__nav {
+    &__link {
+    }
+  }
 }
 </style>

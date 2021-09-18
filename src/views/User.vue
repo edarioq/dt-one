@@ -1,6 +1,5 @@
 <template>
-  <div class="home">
-    <Header />
+  <div class="container user">
     <h1>
       A user section that discovers and buys products, as well as running
       promotions.
@@ -26,3 +25,9 @@ export default class User extends Vue {
   }
 }
 </script>
+
+<style scoped lang="scss">
+.user {
+  padding: 0 50px;
+}
+</style>
