@@ -1,9 +1,9 @@
 export interface Transaction {
   id: number;
   external_id: string;
-  creation_date: "2019-08-24T14:15:22Z";
-  confirmation_expiration_date: "2019-08-24T14:15:22Z";
-  confirmation_date: "2019-08-24T14:15:22Z";
+  creation_date: '2019-08-24T14:15:22Z';
+  confirmation_expiration_date: '2019-08-24T14:15:22Z';
+  confirmation_date: '2019-08-24T14:15:22Z';
   status: {
     id: number;
     message: string;
@@ -55,13 +55,13 @@ export interface Transaction {
   };
   prices: {
     wholesale: {
-      unit_type: "CURRENCY";
+      unit_type: 'CURRENCY';
       unit: string;
       amount: number;
       fee: number;
     };
     retail: {
-      unit_type: "CURRENCY";
+      unit_type: 'CURRENCY';
       unit: string;
       amount: number;
       fee: number;
@@ -74,8 +74,8 @@ export interface Transaction {
   };
   benefits: [
     {
-      type: "TALKTIME";
-      unit_type: "TIME";
+      type: 'TALKTIME';
+      unit_type: 'TIME';
       unit: string;
       amount: {
         base: number;
@@ -91,30 +91,30 @@ export interface Transaction {
       title: string;
       description: string;
       terms: string;
-      start_date: "2019-08-24T14:15:22Z";
-      end_date: "2019-08-24T14:15:22Z";
+      start_date: '2019-08-24T14:15:22Z';
+      end_date: '2019-08-24T14:15:22Z';
     }
   ];
   requested_values: {
     source: {
-      unit_type: "CURRENCY";
+      unit_type: 'CURRENCY';
       unit: string;
       amount: number;
     };
     destination: {
-      unit_type: "CURRENCY";
+      unit_type: 'CURRENCY';
       unit: string;
       amount: number;
     };
   };
   adjusted_values: {
     source: {
-      unit_type: "CURRENCY";
+      unit_type: 'CURRENCY';
       unit: string;
       amount: number;
     };
     destination: {
-      unit_type: "CURRENCY";
+      unit_type: 'CURRENCY';
       unit: string;
       amount: number;
     };
@@ -147,7 +147,7 @@ export interface Transaction {
   };
   statement_identifier: {
     reference: string;
-    due_date: "2019-08-24";
+    due_date: '2019-08-24';
   };
   callback_url: string;
 }

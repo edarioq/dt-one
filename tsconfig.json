@@ -15,7 +15,8 @@
     "types": ["webpack-env", "jest"],
     "paths": {
       "@/*": ["src/*"],
-      "@/models/*": ["src/models/*"]
+      "@models": ["src/models"],
+      "@services/*": ["src/services/*"]
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },

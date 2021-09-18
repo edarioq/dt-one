@@ -24,5 +24,6 @@ C. You can use your preferred technology to do this implementation (DT One adopt
 D. Let’s assume the Product Manage falls in love with your POC, what steps would you take to move it to production?
 
 # Environment Variables
-API_KEY=6d0480d5-2132-56bb-9f04-fec613de2ac4
-API_SECRET=fa838754-c2e0-5118-85ba-be8b835b0774
+
+API_KEY=YOURKEY
+API_SECRET=YOURSECRET

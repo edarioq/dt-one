@@ -1,17 +1,17 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 
-import User from "../views/User.vue";
-import Admin from "../views/Admin.vue";
+import User from '../views/User.vue';
+import Admin from '../views/Admin.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: "/",
-    name: "User",
+    path: '/',
+    name: 'User',
     component: User,
   },
   {
-    path: "/admin",
-    name: "Admin",
+    path: '/admin',
+    name: 'Admin',
     component: Admin,
   },
 ];

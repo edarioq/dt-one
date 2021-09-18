@@ -1,13 +1,13 @@
-import http from "@/Api";
-import { Product } from "@/models";
+import http from '@/Api';
+import { Product } from '@models';
 
 class ProductService {
   getAllProducts(): Promise<Product[]> {
-    return http.get("/v1/products");
+    return http.get('/v1/products');
   }
 
   getProductById(id: string): Promise<Product> {
-    return http.get(`v1/products/${id}`);
+    return http.get(`/v1/products/${id}`);
   }
 }
 

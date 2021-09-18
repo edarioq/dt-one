@@ -1,9 +1,13 @@
-import http from "@/Api";
-import { Transaction } from "@/models";
+import http from '@/Api';
+import { Transaction } from '@models';
 
 class TransactionService {
-  getAllProducts(): Promise<Transaction[]> {
-    return http.get("/v1/transactions");
+  getAllTransactions(): Promise<Transaction[]> {
+    return http.get('/v1/transactions');
+  }
+
+  getTransactionById(id: string): Promise<Transaction> {
+    return http.get(`v1/transaction/${id}`);
   }
 }
 

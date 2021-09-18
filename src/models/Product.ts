@@ -1,5 +1,5 @@
-import { Operator } from "./Operator";
-import { Promotion } from "./Promotion";
+import { Operator } from './Operator';
+import { Promotion } from './Promotion';
 
 export interface Product {
   id: number;
@@ -17,9 +17,9 @@ export interface Product {
       code: string;
     }
   ];
-  type: "FIXED_VALUE_RECHARGE";
+  type: 'FIXED_VALUE_RECHARGE';
   validity: {
-    unit: "HOUR";
+    unit: 'HOUR';
     quantity: number;
   };
   required_debit_party_identifier_fields: string[][];
@@ -27,26 +27,26 @@ export interface Product {
   required_sender_fields: string[][];
   required_beneficiary_fields: string[][];
   required_statement_identifier_fields: string[][];
-  availability_zones: "DOMESTIC"[];
+  availability_zones: 'DOMESTIC'[];
   source: {
-    unit_type: "CURRENCY";
+    unit_type: 'CURRENCY';
     unit: string;
     amount: number;
   };
   destination: {
-    unit_type: "CURRENCY";
+    unit_type: 'CURRENCY';
     unit: string;
     amount: number;
   };
   prices: {
     wholesale: {
-      unit_type: "CURRENCY";
+      unit_type: 'CURRENCY';
       unit: string;
       amount: number;
       fee: number;
     };
     retail: {
-      unit_type: "CURRENCY";
+      unit_type: 'CURRENCY';
       unit: string;
       amount: number;
       fee: number;
@@ -59,8 +59,8 @@ export interface Product {
   };
   benefits: [
     {
-      type: "TALKTIME";
-      unit_type: "TIME";
+      type: 'TALKTIME';
+      unit_type: 'TIME';
       unit: string;
       amount: {
         base: number;

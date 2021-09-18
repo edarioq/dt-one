@@ -1,6 +1,6 @@
 export interface Balance {
   id: number;
-  unit_type: "CURRENCY";
+  unit_type: 'CURRENCY';
   unit: string;
   available: number;
   holding: number;
