@@ -1,13 +1,10 @@
-import axios, { AxiosInstance } from "axios";
+import axios, { AxiosInstance } from 'axios';
 
 const api: AxiosInstance = axios.create({
-  baseURL: "https://preprod-dvs-api.dtone.com",
-  headers: {
-    "Content-type": "application/json",
-  },
+  baseURL: '/api',
   auth: {
-    username: process.env.API_KEY,
-    password: process.env.API_SECRET,
+    username: process.env.VUE_APP_API_KEY,
+    password: process.env.VUE_APP_API_SECRET,
   },
 });
 

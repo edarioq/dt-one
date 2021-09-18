@@ -25,5 +25,7 @@ D. Let’s assume the Product Manage falls in love with your POC, what steps wou
 
 # Environment Variables
 
+```
 API_KEY=YOURKEY
 API_SECRET=YOURSECRET
+```
