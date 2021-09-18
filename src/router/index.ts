@@ -3,7 +3,6 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import User from "../views/User.vue";
 import Admin from "../views/Admin.vue";
 
-
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
@@ -13,7 +12,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/admin",
     name: "Admin",
-    component: Admin
+    component: Admin,
   },
 ];
 

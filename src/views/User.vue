@@ -1,7 +1,10 @@
 <template>
   <div class="home">
-    <Header/>
-    <h1>User</h1>
+    <Header />
+    <h1>
+      A user section that discovers and buys products, as well as running
+      promotions.
+    </h1>
   </div>
 </template>
 

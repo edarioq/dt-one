@@ -1,7 +1,10 @@
 <template>
   <div class="home">
-    <Header/>
-    <h1>Admin</h1>
+    <Header />
+    <h1>
+      An administrator section that displays Megasoft’s available Balances and
+      Transaction reports.
+    </h1>
   </div>
 </template>
 

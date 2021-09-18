@@ -6,10 +6,13 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "prettier": "npx prettier --write ."
   },
   "dependencies": {
+    "axios": "^0.21.4",
     "core-js": "^3.6.5",
+    "dotenv": "^8.6.0",
     "express": "^4.17.1",
     "vue": "^3.0.0",
     "vue-class-component": "^8.0.0-0",
