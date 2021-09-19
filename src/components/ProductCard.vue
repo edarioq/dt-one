@@ -21,11 +21,19 @@
 
     <button
       class="product-card__buy"
-      v-on:click="addToCart(product)"
+      v-on:click="addToCart(product, false)"
       :disabled="loading"
       :class="{ 'product-card__buy--disabled': loading }"
     >
-      {{ loading ? 'Purchasing' : 'Buy Now' }}
+      {{ loading ? 'Purchasing' : 'Buy Now (S)' }}
+    </button>
+    <button
+      class="product-card__buy product-card__buy--error"
+      v-on:click="addToCart(product, true)"
+      :disabled="loading"
+      :class="{ 'product-card__buy--disabled': loading }"
+    >
+      {{ loading ? 'Simulation' : 'Buy Now (E)' }}
     </button>
   </section>
 </template>
@@ -47,21 +55,27 @@ export default class ProductCard extends Vue {
   loading = false;
   emitter = useEmitter();
 
-  addToCart(product: Product): void {
+  addToCart(product: Product, err?: boolean): void {
     this.loading = true;
     const payload: AsyncTransaction = {
       external_id: Math.random().toString(),
       product_id: product.id,
       credit_party_identifier: {
-        mobile_number: '+971585420100',
+        mobile_number: err ? '+971585420102' : '+971585420100',
       },
       auto_confirm: true,
     };
-    TransactionService.createTransaction(payload).then((res) => {
-      console.debug(res);
-      this.loading = false;
-    });
-    this.emitter.emit('add-product', product);
+    console.debug(payload);
+    TransactionService.createTransaction(payload)
+      .then((res) => {
+        this.loading = false;
+        this.emitter.emit('add-product', product);
+        alert(`Transaction ${res.data.id} was created succesfully!`);
+        console.debug(res);
+      })
+      .catch(() => {
+        alert('Transaction could not be completed, please try again!');
+      });
   }
 
   roundPrice(value: string): string {
@@ -79,12 +93,14 @@ export default class ProductCard extends Vue {
   padding: 25px;
   box-sizing: border-box;
   position: relative;
+  background-color: var(--dark);
   &__name {
     font-size: 1.6rem;
     margin-bottom: 50px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: var(--brand-3);
   }
   &__price {
     margin-bottom: 10px;
@@ -99,12 +115,12 @@ export default class ProductCard extends Vue {
     margin-bottom: 20px;
   }
   &__buy {
-    width: 100px;
+    width: 90px;
     height: 25px;
-    background-color: var(--dark);
+    background-color: var(--brand-3);
     border: none;
     border-radius: 5px;
-    color: var(--light);
+    color: var(--dark);
     transition: 300ms;
     text-transform: uppercase;
     position: absolute;
@@ -118,6 +134,11 @@ export default class ProductCard extends Vue {
     &--disabled {
       background-color: var(--brand-2);
       cursor: not-allowed;
+    }
+    &--error {
+      left: inherit;
+      right: 25px;
+      background-color: var(--brand-1);
     }
   }
 }

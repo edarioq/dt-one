@@ -8,12 +8,13 @@
       <h2 class="admin__label">Balance</h2>
       <div class="admin__table">
         <div class="admin__table__header">
-          <div class="admin__table__header__cell">ID</div>
-          <div class="admin__table__header__cell">Balance</div>
-          <div class="admin__table__header__cell">Credit Limit</div>
-          <div class="admin__table__header__cell">Holding</div>
-          <div class="admin__table__header__cell">Unit</div>
-          <div class="admin__table__header__cell">Unit Type</div>
+          <div
+            class="admin__table__header__cell"
+            v-for="header in balanceColumns"
+            :key="header"
+          >
+            {{ header }}
+          </div>
         </div>
         <div class="admin__table__body">
           <div
@@ -42,12 +43,13 @@
       <h2 class="admin__label">Transactions</h2>
       <div class="admin__table">
         <div class="admin__table__header">
-          <div class="admin__table__header__cell">ID</div>
-          <div class="admin__table__header__cell">Status</div>
-          <div class="admin__table__header__cell">Product</div>
-          <div class="admin__table__header__cell">Identifier</div>
-          <div class="admin__table__header__cell">Date</div>
-          <div class="admin__table__header__cell">Price</div>
+          <div
+            class="admin__table__header__cell"
+            v-for="header in transactionsColumns"
+            :key="header"
+          >
+            {{ header }}
+          </div>
         </div>
         <div class="admin__table__body">
           <div
@@ -100,6 +102,22 @@ export default class Admin extends Vue {
   transactions?: Transaction[] = [];
   loadingBalances = false;
   loadingTransactions = false;
+  balanceColumns = [
+    'ID',
+    'Balance',
+    'Credit Limit',
+    'Holding',
+    'Unit',
+    'Unit Type',
+  ];
+  transactionsColumns = [
+    'ID',
+    'Status',
+    'Product',
+    'Identifier',
+    'Date',
+    'Price',
+  ];
 
   mounted(): void {
     this.getBalance();

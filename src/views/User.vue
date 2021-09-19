@@ -1,6 +1,6 @@
 <template>
   <div class="container user">
-    <h1 class="user__heading">Product List</h1>
+    <h1>Product List</h1>
     <template v-if="loading">
       <Loading />
     </template>
@@ -61,16 +61,13 @@ export default class User extends Vue {
 .user {
   padding: 0 50px;
   margin-bottom: 100px;
-  &__heading {
-    font-size: 2.4rem;
-    margin-bottom: 30px;
-  }
   &__product-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, 250px);
     justify-content: space-between;
     grid-column-gap: 25px;
     grid-row-gap: 25px;
+    margin-top: 30px;
   }
 }
 </style>
