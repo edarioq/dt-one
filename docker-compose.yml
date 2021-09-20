@@ -4,7 +4,6 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        - VUE_APP_API_URL=${VUE_APP_API_URL}
         - VUE_APP_API_KEY=${VUE_APP_API_KEY}
         - VUE_APP_API_SECRET=${VUE_APP_API_SECRET}
     ports:
