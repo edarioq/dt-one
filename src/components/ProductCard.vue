@@ -22,18 +22,18 @@
     <button
       class="product-card__buy"
       v-on:click="addToCart(product, false)"
-      :disabled="loading"
-      :class="{ 'product-card__buy--disabled': loading }"
+      :disabled="purchasingSuccess"
+      :class="{ 'product-card__buy--disabled': purchasingSuccess }"
     >
-      {{ loading ? 'Purchasing' : 'Buy Now (S)' }}
+      {{ purchasingSuccess ? 'Purchasing' : 'Buy Now (Success)' }}
     </button>
     <button
       class="product-card__buy product-card__buy--error"
       v-on:click="addToCart(product, true)"
-      :disabled="loading"
-      :class="{ 'product-card__buy--disabled': loading }"
+      :disabled="purchasingDeclined"
+      :class="{ 'product-card__buy--disabled': purchasingDeclined }"
     >
-      {{ loading ? 'Simulation' : 'Buy Now (E)' }}
+      {{ purchasingDeclined ? 'Simulation' : 'Buy Now (Decline)' }}
     </button>
   </section>
 </template>
@@ -52,11 +52,19 @@ import useEmitter from '@/useEmitter';
 })
 export default class ProductCard extends Vue {
   product!: Product;
-  loading = false;
+
+  purchasingSuccess = false;
+  purchasingDeclined = false;
+
   emitter = useEmitter();
 
   addToCart(product: Product, err?: boolean): void {
-    this.loading = true;
+    if (err) {
+      this.purchasingDeclined = true;
+    } else {
+      this.purchasingSuccess = true;
+    }
+
     const payload: AsyncTransaction = {
       external_id: Math.random().toString(),
       product_id: product.id,
@@ -65,16 +73,19 @@ export default class ProductCard extends Vue {
       },
       auto_confirm: true,
     };
-    console.debug(payload);
+
     TransactionService.createTransaction(payload)
       .then((res) => {
-        this.loading = false;
         this.emitter.emit('add-product', product);
-        alert(`Transaction ${res.data.id} was created succesfully!`);
+        alert(`Transaction ${res.id} was created succesfully!`);
         console.debug(res);
       })
       .catch(() => {
         alert('Transaction could not be completed, please try again!');
+      })
+      .finally(() => {
+        this.purchasingSuccess = false;
+        this.purchasingDeclined = false;
       });
   }
 
@@ -115,7 +126,7 @@ export default class ProductCard extends Vue {
   }
   &__buy {
     width: 90px;
-    height: 25px;
+    height: 35px;
     background-color: var(--brand-2);
     border: none;
     border-radius: 5px;

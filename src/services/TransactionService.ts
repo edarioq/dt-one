@@ -1,5 +1,5 @@
 import http from '@/Api';
-import { Transaction } from '@models';
+import { Transaction, AsyncTransaction } from '@models';
 
 class TransactionService {
   getAllTransactions(): Promise<Transaction[]> {
@@ -10,8 +10,8 @@ class TransactionService {
     return http.get(`v1/transaction/${id}`);
   }
 
-  createTransaction(payload: any): Promise<any> {
-    return http.post(`v1/async/transactions`, payload);
+  createTransaction(payload: AsyncTransaction): Promise<Transaction> {
+    return http.post(`v1/async/transactions`, payload).then((res) => res.data);
   }
 }
 
