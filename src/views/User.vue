@@ -5,7 +5,7 @@
       <Loading />
     </template>
     <template v-else>
-      <section class="user__product-list">
+      <section class="user__product-list" v-if="products">
         <ProductCard
           v-for="product in products"
           :key="product.id"

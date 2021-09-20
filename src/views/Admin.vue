@@ -1,6 +1,6 @@
 <template>
   <div class="container admin">
-    <h1>Administrator</h1>
+    <h1>Balances and Transactions</h1>
     <template v-if="loadingBalances && loadingTransactions">
       <Loading />
     </template>
@@ -137,7 +137,6 @@ export default class Admin extends Vue {
     TransactionService.getAllTransactions().then((transactions) => {
       this.transactions = transactions;
       this.loadingTransactions = false;
-      console.debug(this.transactions);
     });
   }
 

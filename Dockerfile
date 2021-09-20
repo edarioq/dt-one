@@ -1,7 +1,7 @@
-FROM node:lts-alpine
+# build stage
+FROM node:lts-alpine as build-stage
 
-# install simple http server for serving static content
-RUN npm install -g http-server
+RUN npm install
 
 # make the 'app' folder the current working directory
 WORKDIR /app
@@ -12,15 +12,23 @@ COPY package*.json ./
 # install project dependencies
 RUN npm install
 
-# Secrets
-ARG VUE_APP_API_KEY
-ARG VUE_APP_API_SECRET
-
 # copy project files and folders to the current working directory (i.e. 'app' folder)
 COPY . .
+
+# Secrets
+ARG VUE_APP_API_URL
+ENV VUE_APP_API_URL=$VUE_APP_API_URL
+ARG VUE_APP_API_KEY
+ENV VUE_APP_API_KEY=$VUE_APP_API_KEY
+ARG VUE_APP_API_SECRET
+ENV VUE_APP_API_SECRET=$VUE_APP_API_SECRET
 
 # build app for production with minification
 RUN npm run build
 
-EXPOSE 8080
-CMD ["node", "index.js"]
+# production stage
+FROM nginx:stable-alpine as production-stage
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build-stage /app/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]

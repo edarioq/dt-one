@@ -8,7 +8,8 @@ Run `npm run serve`
 
 # Run Build
 
-Run `npm run build` and then `npm start`
+Run `docker-compose build`
+Run `docker-compose up`
 
 # Scenario
 
@@ -26,6 +27,7 @@ D. Let’s assume the Product Manage falls in love with your POC, what steps wou
 # Environment Variables
 
 ```
-API_KEY=YOURKEY
-API_SECRET=YOURSECRET
+VUE_APP_API_URL=YOURURL
+VUE_APP_API_KEY=YOURKEY
+VUE_APP_API_SECRET=YOURSECRET
 ```
