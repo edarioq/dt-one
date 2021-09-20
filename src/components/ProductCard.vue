@@ -88,7 +88,6 @@ export default class ProductCard extends Vue {
 .product-card {
   width: 250px;
   height: 250px;
-  border: 1px solid var(--brand-2);
   border-radius: 5px;
   padding: 25px;
   box-sizing: border-box;
@@ -117,7 +116,7 @@ export default class ProductCard extends Vue {
   &__buy {
     width: 90px;
     height: 25px;
-    background-color: var(--brand-3);
+    background-color: var(--brand-2);
     border: none;
     border-radius: 5px;
     color: var(--dark);
@@ -129,7 +128,7 @@ export default class ProductCard extends Vue {
     &:hover {
       cursor: pointer;
       color: var(--dark);
-      background-color: var(--brand-2);
+      background-color: var(--brand-1);
     }
     &--disabled {
       background-color: var(--brand-2);
@@ -138,7 +137,7 @@ export default class ProductCard extends Vue {
     &--error {
       left: inherit;
       right: 25px;
-      background-color: var(--brand-1);
+      background-color: var(--brand-3);
     }
   }
 }

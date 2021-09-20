@@ -43,7 +43,7 @@ export default class Header extends Vue {
       color: var(--light);
       transition: 300ms;
       &:hover {
-        color: var(--brand-3);
+        color: var(--brand-2);
       }
     }
   }
@@ -64,7 +64,7 @@ export default class Header extends Vue {
       text-decoration: none;
       transition: 300ms;
       &:hover {
-        color: var(--brand-3);
+        color: var(--brand-2);
       }
     }
   }
